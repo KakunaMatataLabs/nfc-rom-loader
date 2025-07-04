@@ -1,1 +1,10 @@
+# Redirect per ROM specifiche
+/rom/pokemon-rosso    /pages/pokemon-rosso.html    200
+/rom/pokemon-blu      /pages/pokemon-blu.html      200
+/rom/2048            /pages/2048.html              200
 
+# Fallback per ROM non trovate
+/rom/*               /pages/not-found.html         404
+
+# Redirect API
+/api/*               /.netlify/functions/:splat    200
