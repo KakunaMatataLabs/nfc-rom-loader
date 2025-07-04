@@ -1,1 +1,31 @@
+[build]
+  publish = "public"
 
+[[headers]]
+  for = "/roms/*"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    Content-Disposition = "attachment"
+    Cache-Control = "max-age=31536000"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/rom/pokemon-rosso"
+  to = "/pages/pokemon-rosso.html"
+  status = 200
+
+[[redirects]]
+  from = "/rom/pokemon-blu"
+  to = "/pages/pokemon-blu.html"
+  status = 200
+
+[[redirects]]
+  from = "/rom/2048"
+  to = "/pages/2048.html"
+  status = 200
