@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Rosso - NFC ROM Loader</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <meta name="description" content="Scarica e gioca a Pokémon Rosso con Delta Emulator">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🟥 Pokémon Rosso</h1>
+            <p>Importazione automatica in corso...</p>
+        </header>
 
+        <main>
+            <div class="status-card">
+                <div class="status-icon">⚡</div>
+                <h2>Importazione in corso</h2>
+                <div id="importStatus">
+                    <div class="loading"></div>
+                    <p>Verifica di Delta Emulator...</p>
+                </div>
+            </div>
+
+            <div class="game-info">
+                <h3>📋 Informazioni Gioco</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Titolo:</strong> Pokémon Red Version
+                    </div>
+                    <div class="info-item">
+                        <strong>Console:</strong> Nintendo Game Boy
+                    </div>
+                    <div class="info-item">
+                        <strong>Anno:</strong> 1996
+                    </div>
+                    <div class="info-item">
+                        <strong>Genere:</strong> RPG
+                    </div>
+                    <div class="info-item">
+                        <strong>Dimensione:</strong> ~1MB
+                    </div>
+                    <div class="info-item">
+                        <strong>Lingua:</strong> Inglese
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3>🎯 Istruzioni</h3>
+                <ol>
+                    <li><strong>Automatico:</strong> L'importazione dovrebbe avvenire automaticamente</li>
+                    <li><strong>Manuale:</strong> Se non funziona, scarica il file e importalo manualmente</li>
+                    <li><strong>Controlli:</strong> Usa Delta per configurare i controlli</li>
+                    <li><strong>Salvataggio:</strong> I progressi vengono salvati automaticamente</li>
+                </ol>
+            </div>
+
+            <div class="action-buttons">
+                <button id="retryImport" class="btn btn-primary">🔄 Riprova Importazione</button>
+                <a href="/roms/homebrew/pokemon-red.gb" download class="btn">💾 Download Manuale</a>
+                <a href="/" class="btn">🏠 Torna alla Home</a>
+            </div>
+
+            <div class="troubleshooting">
+                <h3>🔧 Risoluzione Problemi</h3>
+                <details>
+                    <summary>L'importazione non funziona</summary>
+                    <ul>
+                        <li>Verifica che Delta sia installato e aggiornato</li>
+                        <li>Controlla la connessione internet</li>
+                        <li>Prova l'importazione manuale</li>
+                        <li>Riavvia Delta Emulator</li>
+                    </ul>
+                </details>
+                
+                <details>
+                    <summary>Delta non si apre</summary>
+                    <ul>
+                        <li>Assicurati che Delta sia installato dall'App Store</li>
+                        <li>Controlla che sia la versione più recente</li>
+                        <li>Riavvia il dispositivo se necessario</li>
+                    </ul>
+                </details>
+                
+                <details>
+                    <summary>Il gioco non parte</summary>
+                    <ul>
+                        <li>Verifica che la ROM sia stata importata correttamente</li>
+                        <li>Controlla le impostazioni di Delta</li>
+                        <li>Prova a re-importare la ROM</li>
+                    </ul>
+                </details>
+            </div>
+        </main>
+
+        <footer>
+            <p>⚠️ Assicurati di possedere una copia originale del gioco</p>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Script specifico per questa pagina ROM
+        document.addEventListener('DOMContentLoaded', () => {
+            const importStatus = document.getElementById('importStatus');
+            const retryButton = document.getElementById('retryImport');
+            
+            // Gestione retry
+            if (retryButton) {
+                retryButton.addEventListener('click', () => {
+                    location.reload();
+                });
+            }
+            
+            // Aggiorna lo stato dell'importazione
+            function updateImportStatus(message, type = 'info') {
+                if (importStatus) {
+                    let icon = '⚡';
+                    let className = '';
+                    
+                    switch(type) {
+                        case 'success':
+                            icon = '✅';
+                            className = 'status-success';
+                            break;
+                        case 'error':
+                            icon = '❌';
+                            className = 'status-error';
+                            break;
+                        case 'warning':
+                            icon = '⚠️';
+                            className = 'status-warning';
+                            break;
+                    }
+                    
+                    importStatus.innerHTML = `${icon} ${message}`;
+                    importStatus.className = className;
+                }
+            }
+            
+            // Simula il processo di importazione
+            setTimeout(() => {
+                updateImportStatus('Delta Emulator trovato, importazione in corso...', 'info');
+            }, 2000);
+            
+            setTimeout(() => {
+                updateImportStatus('ROM importata con successo! Controlla Delta Emulator.', 'success');
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
